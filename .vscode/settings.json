@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "*.sql": "sql"
+    },
+    "sql.showBatchSeparators": true,
+    "mssql.logDebugInfo": false,
+    "mssql.enableIntelliSense": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true
+    }
+}
