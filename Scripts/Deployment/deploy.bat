@@ -110,6 +110,9 @@ if %errorlevel% neq 0 goto :error
 sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\SeedData\05_EmpleadosYClientes.sql"
 if %errorlevel% neq 0 goto :error
 
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\SeedData\06_DatosAdicionales.sql"
+if %errorlevel% neq 0 goto :error
+
 echo.
 echo ===============================================
 echo  DESPLIEGUE COMPLETADO EXITOSAMENTE
