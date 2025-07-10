@@ -49,12 +49,45 @@ if %errorlevel% neq 0 goto :error
 sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\Tables\06_Usuarios.sql"
 if %errorlevel% neq 0 goto :error
 
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\Tables\07_Clientes.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\Tables\08_TarjetasRFID.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\Tables\09_Empleados.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\Tables\10_ClasesVehiculares.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\Tables\11_TiposPago.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\Tables\12_Turnos.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\Tables\13_EventosTransito.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\Tables\14_LogsAuditoria.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\Tables\15_UpdateTransacciones.sql"
+if %errorlevel% neq 0 goto :error
+
 echo 4. Creando funciones...
 sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\Functions\01_fn_ObtenerTarifaVigente.sql"
 if %errorlevel% neq 0 goto :error
 
 echo 5. Creando procedimientos almacenados...
 sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\StoredProcedures\01_sp_RegistrarTransaccion.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\StoredProcedures\02_sp_AbrirTurno.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\..\Database\StoredProcedures\03_sp_RegistrarEventoTransito.sql"
 if %errorlevel% neq 0 goto :error
 
 echo 6. Creando vistas...
@@ -69,6 +102,12 @@ sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\SeedData\02_Est
 if %errorlevel% neq 0 goto :error
 
 sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\SeedData\03_Tarifas.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\SeedData\04_ClasesVehicularesYTiposPago.sql"
+if %errorlevel% neq 0 goto :error
+
+sqlcmd -S %SERVER_NAME% -d %DATABASE_NAME% -E -i "%SCRIPT_DIR%..\SeedData\05_EmpleadosYClientes.sql"
 if %errorlevel% neq 0 goto :error
 
 echo.
