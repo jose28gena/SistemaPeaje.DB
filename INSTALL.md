@@ -5,20 +5,37 @@
 - SQL Server 2019 o superior
 - SQL Server Management Studio (SSMS) o Azure Data Studio
 - Permisos de administrador en el servidor SQL Server
+- Utilidad `sqlcmd` instalada (incluida con SQL Server)
+
+## Paso Previo: Verificar Conexión
+
+Antes de instalar, verifique la conexión a SQL Server:
+
+1. Abrir línea de comandos en la carpeta `Scripts\Deployment`
+2. Ejecutar:
+   ```batch
+   test-connection.bat [NOMBRE_SERVIDOR]
+   ```
+   Ejemplo:
+   ```batch
+   test-connection.bat DESKTOP-N7I472Q
+   test-connection.bat localhost
+   ```
 
 ## Métodos de Instalación
 
 ### Método 1: Script Automático (Recomendado)
 
-1. Abrir línea de comandos en la carpeta `Scripts\Deployment`
-2. Ejecutar:
+1. Abrir línea de comandos **como Administrador**
+2. Navegar a la carpeta `Scripts\Deployment`
+3. Ejecutar:
    ```batch
    deploy.bat [NOMBRE_SERVIDOR]
    ```
    Ejemplo:
    ```batch
-   deploy.bat localhost
-   deploy.bat MISERVIDOR\SQLEXPRESS
+   deploy.bat DESKTOP-N7I472Q
+   deploy.bat localhost\SQLEXPRESS
    ```
 
 ### Método 2: Manual paso a paso

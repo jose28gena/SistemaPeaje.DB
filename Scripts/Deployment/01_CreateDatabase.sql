@@ -8,35 +8,24 @@
 -- Verificar si la base de datos existe
 IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'SistemaPeaje')
 BEGIN
-    CREATE DATABASE [SistemaPeaje]
-    ON 
-    ( NAME = 'SistemaPeaje_Data',
-      FILENAME = 'C:\Data\SistemaPeaje_Data.mdf',
-      SIZE = 100MB,
-      MAXSIZE = 1GB,
-      FILEGROWTH = 10MB )
-    LOG ON 
-    ( NAME = 'SistemaPeaje_Log',
-      FILENAME = 'C:\Data\SistemaPeaje_Log.ldf',
-      SIZE = 10MB,
-      MAXSIZE = 100MB,
-      FILEGROWTH = 5MB );
-      
+    -- Crear base de datos con configuración automática
+    CREATE DATABASE [SistemaPeaje];
     PRINT 'Base de datos SistemaPeaje creada exitosamente'
 END
 ELSE
 BEGIN
     PRINT 'La base de datos SistemaPeaje ya existe'
 END
-
--- Usar la base de datos
-USE [SistemaPeaje]
 GO
 
--- Configurar opciones de la base de datos
-ALTER DATABASE [SistemaPeaje] SET RECOVERY FULL
+-- Configurar opciones de la base de datos desde master
+ALTER DATABASE [SistemaPeaje] SET RECOVERY SIMPLE
+GO
 ALTER DATABASE [SistemaPeaje] SET AUTO_SHRINK OFF
+GO
 ALTER DATABASE [SistemaPeaje] SET AUTO_CREATE_STATISTICS ON
+GO
 ALTER DATABASE [SistemaPeaje] SET AUTO_UPDATE_STATISTICS ON
+GO
 
 PRINT 'Configuración de base de datos completada'
